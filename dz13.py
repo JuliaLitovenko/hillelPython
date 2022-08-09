@@ -7,20 +7,20 @@ class Human:
         self.sex = sex
         self.energy = energy
 
-    def eat(self):
+       def eat(self):
         self.energy = self.energy + 5
         return f"{self.name} has {self.energy} energy"
     def sleep(self):
-        energy += 10
+        self.energy = self.energy + 10
         return f"{self.name} has {self.energy} energy"
     def talk(self):
-        energy -= 5
+        self.energy = self.energy - 5
         return f"{self.name} has {self.energy} energy"
     def walk(self):
-        energy -= 10
+        self.energy = self.energy - 10
         return f"{self.name} has {self.energy} energy"
     def make_homework(self):
-        energy -=90
+        self.energy = self.energy - 90
         return f"{self.name} has {self.energy} energy"
     def energy_count(self):
 
