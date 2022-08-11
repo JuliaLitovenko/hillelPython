@@ -29,6 +29,7 @@
 #   * ', '.join(sequence) - надає можливість об'єднати елементи послідовності у строку розділені комами
 
 from toolset import sequences
+import numpy as np
 
 GENERATED_SEQ_FILE = "generated_sequence.txt"
 GENERATED_MATRIX_FILE = "generated_matrix.txt"
@@ -40,8 +41,12 @@ def store_sequence(filename, seq):
         return
 
     output_file = open(filename, "w")
-    for el in seq:
-        pass  # зберігаємо елемент у файл
+    s = str(seq).replace(',','\n').join(str(seq))
+    with open(filename, 'w') as f:
+        for el in seq:
+         f.write(s)
+         return filename
+          # зберігаємо елемент у файл
     # повертаємо файл (ресурс) операційній системі
 
 
@@ -55,7 +60,10 @@ def store_matrix(filename, matrix):
         # зберігаємо спочатку розмірність - n m - у файл
         for row in matrix:
             for el in row:
-                pass # pass # зберігаємо кожний елемент у файл
+                 matrix_file.write(str(matrix))
+                 matrix_file.write('\n')
+
+            # зберігаємо кожний елемент у файл
             # новий рядок (у разі коли це не перша строка матриці)
 
 
@@ -63,7 +71,7 @@ def main():
     n, m = 5, 5
     seq = sequences.random_list(n*m, 0, n+m)
     store_sequence(GENERATED_SEQ_FILE, seq)
-    matrix = [[seq[i*m+j] for j in range(m)] for i in range(n)]
+    matrix = np.matrix([[seq[i*m+j] for j in range(m)] for i in range(n)])
     store_matrix(GENERATED_MATRIX_FILE, matrix)
 
 
